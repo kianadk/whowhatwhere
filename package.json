@@ -1,0 +1,22 @@
+{
+  "name": "whowhatwhere",
+  "version": "1.0.0",
+  "description": "UCLA CS M117 Project, Spring 2018",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kianadk/whowhatwhere.git"
+  },
+  "author": "Kiana Kavoosi, Levi Vogel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kianadk/whowhatwhere/issues"
+  },
+  "homepage": "https://github.com/kianadk/whowhatwhere#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
