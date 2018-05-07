@@ -4,11 +4,11 @@ const app = express();
 
 app.use(express.static(__dirname));
 
-
 app.get('/', (req, res) => {
-    res.send('Welcome to Who What Where!');
+  // res.send('Welcome to Who What Where!');
+  res.render('index.html');
 });
 
 app.listen(3600, () => {
-    console.log('Running server at localhost:3600');
+  console.log('Running server at localhost:3600');
 });
