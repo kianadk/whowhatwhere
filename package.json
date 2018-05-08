@@ -18,6 +18,8 @@
   "homepage": "https://github.com/kianadk/whowhatwhere#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
     "yelp-fusion": "^2.0.3"
   }
 }

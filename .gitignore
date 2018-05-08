@@ -1,2 +1,5 @@
 node_modules/*
 passwords.json
+.DS_Store
+server.crt
+server.key
