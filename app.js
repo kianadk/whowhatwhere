@@ -18,7 +18,7 @@ app.post('/yelp', async function(req, res) {
     res.json(info);
   }
   catch(e) {
-    res.send("Error finding businesses with yelp");
+    res.send("Error finding businesses with Yelp");
     console.log(e);
   }
 });
