@@ -2,10 +2,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<title>WhoWhatWhere</title>
     <link rel="stylesheet" type= "text/css" href="styles.css">
   </head>
   <body>
-    <div id="content"></div>
-    <script src="init.js"></script>
+  	<div id="header-banner">
+  		<div id="header-logo"><img src="logo.png"></div>
+  	</div>
+
+  	<div id="body-content">
+  		<div id="content-yelp">
+  			<t><h1>Nearby Yelp Suggestions</h1><p id="yelp-loading">Loading, please wait...</p></t>
+  		</div>
+
+  		<div id="content-data"></div>
+  	</div>
+
+    <div style="display: none" id="footer-banner">
+    	<div id="reference">
+    		<t><p>
+				This app is open source.  You may view the source
+				<a id="reference-link" href="https://github.com/kianadk/whowhatwhere">here</a>.
+    		</p></t>
+    	</div>
+    </div>
   </body>
+
+  <script src="init.js"></script>
 </html>

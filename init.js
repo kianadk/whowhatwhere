@@ -1,4 +1,4 @@
-const contentDiv = document.getElementById('content');
+const contentDiv = document.getElementById('content-data');
 
 contentDiv.innerHTML = 'Hello! Welcome to Who What Where.';
 
@@ -16,6 +16,19 @@ async function getYelpBusinesses(lat, lon) {
 	info = await info.json();
 
 	return info.names;
+}
+
+function appendYelpBlocks(businesses) {
+	var parent = document.getElementById("content-yelp");
+	for (let i = 0; i < businesses.length; i++) {
+		const child = document.createElement("div");
+		child.className = "yelp-block";
+		child.innerHTML = "<t><h3>" + businesses[i] + "</h3></t>"
+		parent.appendChild(child);
+	}
+	var loading_text = document.getElementById("yelp-loading");
+	var loading_text_parent = loading_text.parentElement;
+	loading_text_parent.removeChild(loading_text);
 }
 
 async function sendLocation(lat, lon) {
@@ -51,13 +64,14 @@ async function getLocations() {
 }
 
 function displayLocations(locations) {
+	var parent = document.getElementById("content-data");
 	const list = document.createElement('ul');
 	for (let i = 0; i < locations.length; i++) {
 		const item = document.createElement('li');
 		item.innerHTML = `${locations[i].name} is located at (${locations[i].latitude}, ${locations[i].longitude})`;
 		list.appendChild(item);
 	}
-	document.body.appendChild(list);
+	parent.appendChild(list);
 }
 
 getLocations().then((locations) => {
@@ -66,18 +80,9 @@ getLocations().then((locations) => {
 
 if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition((position) => {
-    contentDiv.innerHTML = `Your current latitude is ${position.coords.latitude} and your current longitude is ${position.coords.longitude}.`;
     let listing = getYelpBusinesses(position.coords.latitude, position.coords.longitude).then(businesses => {
-    	let accumulator = "<ul>";
-	    for (let i = 0; i < businesses.length; i++) {
-	    	accumulator = accumulator + "<li>" + businesses[i] + "</li>";
-	    }
-	    accumulator += "</ul>";
-			contentDiv.innerHTML += accumulator;
-			
-			sendLocation(position.coords.latitude, position.coords.longitude);
-
-	    return accumulator;
+    	appendYelpBlocks(businesses);
+    	document.getElementById("footer-banner").style.display = "block";
     }).catch(e => {
     	console.log(e);
     });
