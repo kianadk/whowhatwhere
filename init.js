@@ -21,16 +21,15 @@ async function getYelpBusinesses(lat, lon) {
 function appendYelpBlocks(businesses) {
 	var parent = document.getElementById("content-yelp");
 	for (let i = 0; i < businesses.length; i++) {
-		const child = document.createElement("div");
-		if (i % 2 == 0) {
-			child.className = "yelp-block left-float";
-		}
-		else {
-			child.className = "yelp-block right-float";
-		}
-		child.innerHTML = "<div class='business-name'><t><h3>" + businesses[i] + "</h3></t></div>";
-		child.innerHTML += "<div class='business-users'><t><h3>Users: " + "0" + "</h3></t></div>"
-		parent.appendChild(child);
+		const yelpBlock = document.createElement("div");
+		yelpBlock.className = "yelp-block";
+
+		const businessName = document.createElement('span');
+		businessName.className = 'business-name';
+		businessName.innerHTML = businesses[i]
+		yelpBlock.appendChild(businessName)
+
+		parent.appendChild(yelpBlock);
 	}
 	var loading_text = document.getElementById("yelp-loading");
 	var loading_text_parent = loading_text.parentElement;
@@ -88,7 +87,6 @@ if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition((position) => {
     let listing = getYelpBusinesses(position.coords.latitude, position.coords.longitude).then(businesses => {
     	appendYelpBlocks(businesses);
-    	document.getElementById("footer-banner").style.display = "block";
     }).catch(e => {
     	console.log(e);
     });
