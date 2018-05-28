@@ -22,7 +22,12 @@ function appendYelpBlocks(businesses) {
 	var parent = document.getElementById("content-yelp");
 	for (let i = 0; i < businesses.length; i++) {
 		const child = document.createElement("div");
-		child.className = "yelp-block";
+		if (i % 2 == 0) {
+			child.className = "yelp-block left-float";
+		}
+		else {
+			child.className = "yelp-block right-float";
+		}
 		child.innerHTML = "<t><h3>" + businesses[i] + "</h3></t>"
 		parent.appendChild(child);
 	}
