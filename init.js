@@ -28,7 +28,8 @@ function appendYelpBlocks(businesses) {
 		else {
 			child.className = "yelp-block right-float";
 		}
-		child.innerHTML = "<t><h3>" + businesses[i] + "</h3></t>"
+		child.innerHTML = "<div class='business-name'><t><h3>" + businesses[i] + "</h3></t></div>";
+		child.innerHTML += "<div class='business-users'><t><h3>Users: " + "0" + "</h3></t></div>"
 		parent.appendChild(child);
 	}
 	var loading_text = document.getElementById("yelp-loading");

@@ -55,11 +55,6 @@
 	text-align: center;
 }
 
-.yelp-block h3 {
-	margin: 0;
-	margin-top: .2em;
-}
-
 .left-float {
 	float: left;
 	margin-left: .5em;
@@ -68,6 +63,28 @@
 .right-float {
 	float: right;
 	margin-right: .5em;
+}
+
+.business-name {
+	text-align: left;
+	margin-left: 1em;
+	float: left;
+}
+
+.business-name h3 {
+	margin: 0;
+	margin-top: .25em;
+}
+
+.business-users {
+	text-align: right;
+	margin-right: 1em;
+	float: right;
+}
+
+.business-users h3 {
+	margin: 0;
+	margin-top: .25em;
 }
 
 body {
