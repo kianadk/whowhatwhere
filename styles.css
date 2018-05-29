@@ -38,7 +38,7 @@
 	height: 32em;
 }
 
-#yelp-title {
+.title {
 	text-align: center;
 }
 
@@ -46,7 +46,7 @@
 	display: none;
 }
 
-.yelp-block {
+.yelp-block, .who-block {
 	margin-top: .1em;
 	width: 45%;
 	height: 2em;
@@ -69,7 +69,7 @@
 	margin-right: .5em;
 }
 
-.business-name {
+.business-name, .user-name {
 	line-height: 2em;
 	vertical-align: middle;
 	text-align: left;
@@ -77,20 +77,12 @@
 	float: left;
 }
 
-.business-name h3 {
-	margin: 0;
-	margin-top: .25em;
-}
-
-.business-users {
-	text-align: right;
+.business-distance, .user-distance {
+	line-height: 2em;
+	vertical-align: middle;
+	text-align: left;
 	margin-right: 1em;
 	float: right;
-}
-
-.business-users h3 {
-	margin: 0;
-	margin-top: .25em;
 }
 
 body {

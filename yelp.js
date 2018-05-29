@@ -7,14 +7,19 @@ const client = yelp_fusion.client(YELP_KEY);
 module.exports = async function(lat, lon) {
   const searchRequest = {latitude: lat, longitude: lon}
   const results = client.search(searchRequest).then(response => {
-    let names = [];
+    let businesses = [];
     for (let i = 0; i < response.jsonBody.businesses.length; i++) {
-      names[i] = response.jsonBody.businesses[i].name;
+      businesses[i] = {
+        name: response.jsonBody.businesses[i].name,
+        distance: response.jsonBody.businesses[i].distance
+      };
     }
-    return {names: names};
+  
+    return {businesses: businesses};
   }).catch(e => {
     console.log(e);
   });
   const answer = await results;
+  console.log(answer)
   return answer;
 }
