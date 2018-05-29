@@ -88,6 +88,9 @@ function displayLocations(locations, lat, long) {
 	for (let i = 0; i < locations.length; i++) {
 		const distance = getDistance(lat, long, locations[i].latitude, locations[i].longitude);
 
+		if (distance > 1609) // more than 1 mile away
+			continue;
+
 		const item = document.createElement('div');
 		item.className = 'who-block';
 

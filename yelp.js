@@ -5,7 +5,7 @@ const yelp_fusion = require('yelp-fusion');
 const client = yelp_fusion.client(YELP_KEY);
 
 module.exports = async function(lat, lon) {
-  const searchRequest = {latitude: lat, longitude: lon}
+  const searchRequest = {latitude: lat, longitude: lon, radius: 1609}
   const results = client.search(searchRequest).then(response => {
     let businesses = [];
     for (let i = 0; i < response.jsonBody.businesses.length; i++) {
