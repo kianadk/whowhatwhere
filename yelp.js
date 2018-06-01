@@ -20,6 +20,5 @@ module.exports = async function(lat, lon) {
     console.log(e);
   });
   const answer = await results;
-  console.log(answer)
   return answer;
 }

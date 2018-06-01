@@ -9,7 +9,6 @@ async function getYelpBusinesses(lat, lon) {
 		headers: headers,
 		body: JSON.stringify(body)
 	});
-	console.log(info);
 	info = await info.json();
 
 	return info.businesses;
@@ -39,8 +38,6 @@ function appendYelpBlocks(businesses) {
 }
 
 async function sendLocation(lat, lon) {
-	console.log('location info sent');
-
 	const body = {latitude: lat, longitude: lon};
 
 	const headers = new Headers();
@@ -52,7 +49,6 @@ async function sendLocation(lat, lon) {
 		body: JSON.stringify(body)
 	});
 	info = await info.json();
-	console.log(info);
 }
 
 async function getLocations() {
@@ -64,7 +60,6 @@ async function getLocations() {
 		headers: headers,
 	});
 	info = await info.json();
-	console.log(info);	
 	return info;
 }
 
@@ -124,6 +119,7 @@ function displayLocations(locations, lat, long) {
 
 if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition((position) => {
+		sendLocation(position.coords.latitude, position.coords.longitude);
 		displayWhere(position.coords.latitude, position.coords.longitude);
 		getLocations().then((locations) => {
 			displayLocations(locations, position.coords.latitude, position.coords.longitude);
