@@ -9,9 +9,12 @@ module.exports = async function(lat, lon) {
   const results = client.search(searchRequest).then(response => {
     let businesses = [];
     for (let i = 0; i < response.jsonBody.businesses.length; i++) {
+      console.log(response.jsonBody.businesses)
       businesses[i] = {
         name: response.jsonBody.businesses[i].name,
-        distance: response.jsonBody.businesses[i].distance
+        distance: response.jsonBody.businesses[i].distance,
+        latitude: response.jsonBody.businesses[i].coordinates.latitude,
+        longitude: response.jsonBody.businesses[i].coordinates.longitude
       };
     }
   

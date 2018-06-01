@@ -3,9 +3,10 @@
 <html>
   <head>
   	<title>WhoWhatWhere</title>
-    <link rel="stylesheet" type= "text/css" href="styles.css">
+		<link rel="stylesheet" type= "text/css" href="styles.css">
+		<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=MAP_KEY'></script>
   </head>
-  <body>
+  <body onload="loadMapScenario();">
   	<div id="header-banner">
   		<div id="header-logo"><img src="logo.png"></div>
   	</div>
@@ -16,6 +17,7 @@
 							<h1>Who</h1>
 								<p id="who-loading">Loading, please wait...</p>
 						</div>
+						<div id="whoMap"></div>
 			</div>
 
   		<div id="content-yelp">
@@ -23,6 +25,7 @@
 					<h1>What</h1>
 						<p id="yelp-loading">Loading, please wait...</p>
 				</div>
+				<div id="whatMap"></div>
 			</div>
 			
 			<div id="content-where">
@@ -30,7 +33,8 @@
 					<h1>Where</h1>
 						<p id="where-loading">Loading, please wait...</p>
 				</div>
-  		</div>
+			</div>
+			<div id="whereMap"></div>
   	</div>
 
     <div id="footer-banner">

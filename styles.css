@@ -35,7 +35,12 @@
 
 #content-yelp {
 	margin-bottom: .1em;
-	height: 32em;
+}
+
+#whoMap, #whatMap, #whereMap {
+	height: 400px;
+	width: 400px;
+	margin: 20px auto;
 }
 
 .title {

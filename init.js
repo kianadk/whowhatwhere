@@ -1,3 +1,7 @@
+let whoMap;
+let whatMap;
+let whereMap;
+
 async function getYelpBusinesses(lat, lon) {
 	const body = {latitude: lat, longitude: lon};
 
@@ -31,6 +35,13 @@ function appendYelpBlocks(businesses) {
 		yelpBlock.appendChild(businessDistance);
 
 		parent.appendChild(yelpBlock);
+
+		var pushpin = new Microsoft.Maps.Pushpin({
+			latitude: businesses[i].latitude,
+			longitude: businesses[i].longitude
+		}, null);
+		whatMap.entities.push(pushpin);
+
 	}
 	var loading_text = document.getElementById("yelp-loading");
 	var loading_text_parent = loading_text.parentElement;
@@ -87,6 +98,12 @@ function displayWhere(lat, long){
 
 	let loading_text = document.getElementById("where-loading");
 	loading_text.parentElement.removeChild(loading_text);
+
+	var pushpin = new Microsoft.Maps.Pushpin({
+		latitude: lat,
+		longitude: long
+	}, null);
+	whereMap.entities.push(pushpin);
 }
 
 function displayLocations(locations, lat, long) {
@@ -111,10 +128,22 @@ function displayLocations(locations, lat, long) {
 		item.appendChild(userDistance);
 
 		parent.appendChild(item);
+
+		var pushpin = new Microsoft.Maps.Pushpin({
+			latitude: locations[i].latitude,
+			longitude: locations[i].longitude
+		}, null);
+		whoMap.entities.push(pushpin);
 	}
 
 	let loading_text = document.getElementById("who-loading");
 	loading_text.parentElement.removeChild(loading_text);
+}
+
+function loadMapScenario() {
+	whoMap = new Microsoft.Maps.Map(document.getElementById('whoMap'), {});
+	whatMap = new Microsoft.Maps.Map(document.getElementById('whatMap'), {});
+	whereMap = new Microsoft.Maps.Map(document.getElementById('whereMap'), {});
 }
 
 if ('geolocation' in navigator) {
