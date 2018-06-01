@@ -83,6 +83,17 @@ function getDistance(lat1, long1, lat2, long2) {
 	return Math.round(R * c);
 }
 
+function displayWhere(lat, long){
+	let parent = document.getElementById('content-where');
+	const where = document.createElement('div');
+	where.className = 'where-block';
+	where.innerHTML = `You are currently located at latitude ${Math.round(lat * 100) / 100} and longitude ${Math.round(long * 100) / 100}`;
+	parent.appendChild(where);
+
+	let loading_text = document.getElementById("where-loading");
+	loading_text.parentElement.removeChild(loading_text);
+}
+
 function displayLocations(locations, lat, long) {
 	var parent = document.getElementById("content-who");
 	for (let i = 0; i < locations.length; i++) {
@@ -113,6 +124,7 @@ function displayLocations(locations, lat, long) {
 
 if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition((position) => {
+		displayWhere(position.coords.latitude, position.coords.longitude);
 		getLocations().then((locations) => {
 			displayLocations(locations, position.coords.latitude, position.coords.longitude);
 		});
@@ -124,6 +136,5 @@ if ('geolocation' in navigator) {
     });
   });
 } else {
-	//TODO: Update error behavior
-	//contentDiv.innerHTML = 'We can\'t access your location, so our site doesn\'t work :(';
+	body.innerHTML = 'We can\'t access your location, so our site doesn\'t work :(';
 }
