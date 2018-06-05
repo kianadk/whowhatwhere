@@ -159,7 +159,11 @@ if ('geolocation' in navigator) {
     }).catch(e => {
     	console.log(e);
     });
-  });
+	},
+ (error) => {
+		if (error.code == error.PERMISSION_DENIED)
+			document.body.innerHTML = 'We can\'t access your location, so our site doesn\'t work :(';
+ });
 } else {
-	body.innerHTML = 'We can\'t access your location, so our site doesn\'t work :(';
+	document.body.innerHTML = 'We can\'t access your location, so our site doesn\'t work :(';
 }
